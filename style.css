@@ -14,6 +14,7 @@ body {
   border-radius:40px;
 }
 .phone-screen {
+  margin-top: 0px;
   position:absolute;
   top: 20px;
   bottom:20px;
@@ -23,15 +24,40 @@ body {
   border-radius:20px;
 }
 .phone-buttons{
-  width:
   display:grid;
-  grid-template-columns: repeat(3 1fr);
-  border:0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  justify-items: center;
+  row-gap: 15px;
+  margin-top: 20px;
 }
 .btn{
   height:45px;
+  width: 45px;
   font-size:1em;
   border:none;
-  border-radius:100%
+  border-radius:50%;
 }
-// had to pause cause my pc was running low.
+.btn:hover {
+  background: #C1C1C1;
+}
+.input-div {
+  width: 90%;
+  margin: 20px auto;
+
+}
+#input-tel {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #C1C1C1;
+  border-radius: 10px;
+  color: #c1c1c1;
+  font-size: 20px;
+  padding: 10px;
+}
+
+#input-tel:focus {
+  border: 2px dotted #fff;
+  color: #c1c1c1;
+  font-size: 20px;
+}
