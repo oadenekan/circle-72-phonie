@@ -5,11 +5,12 @@ body {
   justify-content: center;
   align-items:center;
   min-height:100vh;
+/*   background-image: url(cool.png); */
 }
 .phone {
   position:relative;
   width:295px;
-  height:650px;
+  height:520px;
   background: #000;
   border-radius:40px;
 }
@@ -20,7 +21,7 @@ body {
   bottom:20px;
   right:6px;
   left:6px;
-  background:#fff;
+  background:#e1dbdb;
   border-radius:20px;
 }
 .phone-buttons{
@@ -47,17 +48,19 @@ body {
 
 }
 #input-tel {
-  height: 50px;
+  height: 60px;
   width: 100%;
-  border: 1px solid #C1C1C1;
+    border: 2px solid #000;
+/*   border: 1px solid #C1C1C1; */
   border-radius: 10px;
-  color: #c1c1c1;
+  color: #C1C1C1;
   font-size: 20px;
   padding: 10px;
 }
 
 #input-tel:focus {
   border: 2px dotted #fff;
-  color: #c1c1c1;
+/*   color: #c1c1c1; */
+  color: #000;
   font-size: 20px;
 }
