@@ -22,21 +22,28 @@ const nodeList = document.querySelectorAll(".btn");
 for (var i = 0; i < nodeList.length; i++) {
     nodeList[i].addEventListener('click', function(event) {
       phone_num += event.target.innerHTML;
-     inputNode.value = phone_num;
+      inputNode.value = phone_num;
+      if (!phoneValidate(phone_num)) {
+    alert('Enter a valid phone number');
+  }
 
 })}
 
 inputNode.addEventListener("change", function() {
-  console.log(phone_num, 'love');
     phone_num = this.value
+    if (!phoneValidate(phone_num)) {
+      alert('Enter a valid phone number');
+    }
+    
   let sliced_phoneNum = phone_num.slice(0, 4);
 
-  Object.keys(phone_code).forEach(keys => {
+  const carrierNames = Object.keys(phone_code);
+
+  carrierNames.forEach(keys => {
     if(Object.values(phone_code[keys]).includes(sliced_phoneNum))
   telecoms = keys;
  });
-  const carrierNames = ['mtn', 'airtel', 'glo', 'etisalat'];
-
+  
   function addRemoveClass (carrier) {
     if (carrier !== telecoms) return;
     inputNode.classList.add(carrier);  
@@ -50,7 +57,6 @@ inputNode.addEventListener("change", function() {
 
 //THINGS LEFT TO DO
 
-//Change the UI of the phonie app
-//Refactor working code.
+
 //Decide on the advanced feature to add to our phonue app.         
  
