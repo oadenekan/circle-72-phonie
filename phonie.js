@@ -10,58 +10,44 @@ const phone_code = {
 
 function phoneValidate(inputText) {
   const phone_reg = /^\(?(\d{4})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
-  if (phone_reg.test(inputText)) {
-    return true;
-  } else {
-    return false;
-  }
+  return phone_reg.test(inputText);
 }
 
 let phone_num = '';
+let telecoms = '';
+// Get button values
 const inputNode = document.getElementById('input-tel');
+
 const nodeList = document.querySelectorAll(".btn");
 for (var i = 0; i < nodeList.length; i++) {
     nodeList[i].addEventListener('click', function(event) {
       phone_num += event.target.innerHTML;
-  console.log(phone_num,'hi');
+     inputNode.value = phone_num;
+
 })}
 
 inputNode.addEventListener("change", function() {
   console.log(phone_num, 'love');
-    phone_num += this.value
+    phone_num = this.value
   let sliced_phoneNum = phone_num.slice(0, 4);
-  let telecoms = "";
 
   Object.keys(phone_code).forEach(keys => {
     if(Object.values(phone_code[keys]).includes(sliced_phoneNum))
   telecoms = keys;
-  
-  let img = inputNode.nextElementSibling;
-  // let img = document.getElementById('carrier-log');
- 
-  if (telecoms === 'mtn') {
-    img.src = 'phonie-logos/mtn-logo.png';
-  }
-  else if (telecoms === 'airtel') {
-    img.src = 'phonie-logos/airtel-logo.png';
-  }
-  else if (telecoms === 'glo') {
-    img.src = 'phonie-logos/glo-logo.png';
-  }
-  else if (telecoms === 'etisalat') {
-    img.src = 'phonie-logos/9mobile-logo.png';  
-  }
  });
-});
+  const carrierNames = ['mtn', 'airtel', 'glo', 'etisalat'];
 
-function numberClick(type, value){
-  let input = document.getElementsById("input-tel");
-  if (type=="dial"){
-    input.val(numberValues + value);
-  }else if(type=='delete'){
-    input.val("");
+  function addRemoveClass (carrier) {
+    if (carrier !== telecoms) return;
+    inputNode.classList.add(carrier);  
+    const selectedCarrierIndex = carrierNames.indexOf(carrier);
+    carrierNames.splice(selectedCarrierIndex, 1);
+    inputNode.classList.remove(...carrierNames); 
   }
-};
+
+  carrierNames.map((elm) => addRemoveClass(elm));
+  });
+
 //THINGS LEFT TO DO
 
 //Change the UI of the phonie app

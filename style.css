@@ -50,17 +50,33 @@ body {
 #input-tel {
   height: 60px;
   width: 100%;
-    border: 2px solid #000;
-/*   border: 1px solid #C1C1C1; */
+  border: 1px solid #C1C1C1;
   border-radius: 10px;
-  color: #C1C1C1;
   font-size: 20px;
   padding: 10px;
 }
+.mtn{
+  background-image: url('phonie-logos/mtn-logo.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}
+.airtel{
+  background-image: url('phonie-logos/airtel-logo.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}
+.glo {
+  background-image: url('phonie-logos/glo-logo.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}
+.etisalat {
+  background-image: url('phonie-logos/9mobile-logo.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}
 
-#input-tel:focus {
-  border: 2px dotted #fff;
-/*   color: #c1c1c1; */
+#input-tel :focus {
   color: #000;
   font-size: 20px;
 }
