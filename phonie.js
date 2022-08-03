@@ -8,6 +8,8 @@ const phone_code = {
     etisalat:['0809', '0817','0818', '0908','0909']
 }
 
+const inputNode = document.getElementById('input-tel');
+
 function phoneValidate(inputText) {
   const phone_reg = /^\(?(\d{4})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
   return phone_reg.test(inputText);
@@ -15,24 +17,32 @@ function phoneValidate(inputText) {
 
 let phone_num = '';
 let telecoms = '';
-// Get button values
-const inputNode = document.getElementById('input-tel');
 
+// Get button values
 const nodeList = document.querySelectorAll(".btn");
 for (var i = 0; i < nodeList.length; i++) {
+  // console.log(nodeList[i].innerHTML)
     nodeList[i].addEventListener('click', function(event) {
+  switch(event.target.innerHTML) {    
+    case "Del":
+      inputNode.value = inputNode.value.slice(0, -1)
+      phone_num = inputNode.value; 
+      break;
+    
+    default:
       phone_num += event.target.innerHTML;
       inputNode.value = phone_num;
-      if (!phoneValidate(phone_num)) {
-    alert('Enter a valid phone number');
   }
-
+  if (!phoneValidate(phone_num)) {
+    alert('Enter a valid phone number of exactly 11 digits, not more, not less');
+  }
 })}
 
+//Get input field values
 inputNode.addEventListener("change", function() {
     phone_num = this.value
     if (!phoneValidate(phone_num)) {
-      alert('Enter a valid phone number');
+      alert('Enter a valid phone number of exactly 11 digits, not more, not less');
     }
     
   let sliced_phoneNum = phone_num.slice(0, 4);
@@ -44,7 +54,7 @@ inputNode.addEventListener("change", function() {
   telecoms = keys;
  });
   
-  function addRemoveClass (carrier) {
+  function toggleClass (carrier) {
     if (carrier !== telecoms) return;
     inputNode.classList.add(carrier);  
     const selectedCarrierIndex = carrierNames.indexOf(carrier);
@@ -52,11 +62,9 @@ inputNode.addEventListener("change", function() {
     inputNode.classList.remove(...carrierNames); 
   }
 
-  carrierNames.map((elm) => addRemoveClass(elm));
+  carrierNames.map((elm) => toggleClass(elm));
   });
 
 //THINGS LEFT TO DO
-
-
-//Decide on the advanced feature to add to our phonue app.         
+//Decide on the advanced feature to add to our phonie app.      
  
