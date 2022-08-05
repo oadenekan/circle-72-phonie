@@ -32,7 +32,7 @@ body {
   row-gap: 15px;
   margin-top: 20px;
 }
-.btn, .btn-call{
+.btn, #btn-call{
   height:45px;
   width: 45px;
   font-size:1em;

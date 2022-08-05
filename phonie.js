@@ -9,6 +9,7 @@ const phone_code = {
 }
 
 const inputNode = document.getElementById('input-tel');
+const callNode = document.getElementById('btn-call');
 
 function phoneValidate(inputText) {
   const phone_reg = /^\(?(\d{4})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
@@ -22,8 +23,8 @@ let telecoms = '';
 const nodeList = document.querySelectorAll(".btn");
 for (var i = 0; i < nodeList.length; i++) {
   // console.log(nodeList[i].innerHTML)
-    nodeList[i].addEventListener('click', function(event) {
-  switch(event.target.innerHTML) {    
+  nodeList[i].addEventListener('click', function(event) {
+    switch(event.target.innerHTML) {    
     case "Del":
       inputNode.value = inputNode.value.slice(0, -1)
       phone_num = inputNode.value; 
@@ -32,39 +33,37 @@ for (var i = 0; i < nodeList.length; i++) {
     default:
       phone_num += event.target.innerHTML;
       inputNode.value = phone_num;
-  }
-  if (!phoneValidate(phone_num)) {
-    alert('Enter a valid phone number of exactly 11 digits, not more, not less');
-  }
-})}
+    }
+  }                          
+)}
 
 //Get input field values
-inputNode.addEventListener("change", function() {
-    phone_num = this.value
-    if (!phoneValidate(phone_num)) {
-      alert('Enter a valid phone number of exactly 11 digits, not more, not less');
-    }
-    
+inputNode.addEventListener("input", function() {
+  phone_num = this.value
   let sliced_phoneNum = phone_num.slice(0, 4);
 
   const carrierNames = Object.keys(phone_code);
+    carrierNames.forEach(keys => {
+      if (sliced_phoneNum.length < 4) return;
+if(Object.values(phone_code[keys]).includes(sliced_phoneNum))
+    telecoms = keys;
+   });
+    
+    function toggleClass (carrier) {
+      if (carrier !== telecoms) return;
+      inputNode.classList.add(carrier);  
+      const selectedCarrierIndex = carrierNames.indexOf(carrier);
+      carrierNames.splice(selectedCarrierIndex, 1);
+      inputNode.classList.remove(...carrierNames);    
+    }
+    carrierNames.map((elm) => toggleClass(elm));
+    });
 
-  carrierNames.forEach(keys => {
-    if(Object.values(phone_code[keys]).includes(sliced_phoneNum))
-  telecoms = keys;
- });
-  
-  function toggleClass (carrier) {
-    if (carrier !== telecoms) return;
-    inputNode.classList.add(carrier);  
-    const selectedCarrierIndex = carrierNames.indexOf(carrier);
-    carrierNames.splice(selectedCarrierIndex, 1);
-    inputNode.classList.remove(...carrierNames); 
-  }
-
-  carrierNames.map((elm) => toggleClass(elm));
-  });
-
+  callNode.addEventListener('click', function() {
+        if (!phoneValidate(phone_num)) {
+      alert('Enter a valid phone number of exactly 11 digits, not more, not less');
+    }
+  })
 //THINGS LEFT TO DO
 //Decide on the advanced feature to add to our phonie app.      
  
