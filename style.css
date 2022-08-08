@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  padding:0;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  min-height:100vh;
+/*   background-image: url(cool.png); */
+}
+.phone {
+  position:relative;
+  width:295px;
+  height:520px;
+  background: #000;
+  border-radius:40px;
+}
+.phone-screen {
+  margin-top: 0px;
+  position:absolute;
+  top: 20px;
+  bottom:20px;
+  right:6px;
+  left:6px;
+  background:#e1dbdb;
+  border-radius:20px;
+}
+.phone-buttons{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  justify-items: center;
+  row-gap: 15px;
+  margin-top: 20px;
+}
+.btn, #btn-call{
+  height:45px;
+  width: 45px;
+  font-size:1em;
+  border:none;
+  border-radius:50%;
+}
+.btn:hover, .btn-call:hover {
+  background: #C1C1C1;
+}
+.input-div {
+  width: 90%;
+  margin: 20px auto;
+
+}
+#input-tel {
+  height: 60px;
+  width: 100%;
+  border: 1px solid #C1C1C1;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px;
+}
+.mtn{
+  background-image: url('phonie-logos/mtn-logo.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}
+.airtel{
+  background-image: url('phonie-logos/airtel-logo.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}
+.glo {
+  background-image: url('phonie-logos/glo-logo.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}
+.etisalat {
+  background-image: url('phonie-logos/9mobile-logo.png');
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+#input-tel :focus {
+  color: #000;
+  font-size: 20px;
+}
